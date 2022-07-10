@@ -1142,29 +1142,32 @@ export class MarkdownDocumenter {
     }
 
     let baseName: string = '';
-    for (const hierarchyItem of apiItem.getHierarchy()) {
-      // For overloaded methods, add a suffix such as "MyClass.myMethod_2".
-      let qualifiedName: string = Utilities.getSafeFilenameForName(hierarchyItem.displayName);
-      if (ApiParameterListMixin.isBaseClassOf(hierarchyItem)) {
-        if (hierarchyItem.overloadIndex > 1) {
-          // Subtract one for compatibility with earlier releases of API Documenter.
-          // (This will get revamped when we fix GitHub issue #1308)
-          qualifiedName += `_${hierarchyItem.overloadIndex - 1}`;
-        }
-      }
 
-      switch (hierarchyItem.kind) {
-        case ApiItemKind.Model:
-        case ApiItemKind.EntryPoint:
-        case ApiItemKind.EnumMember:
-          break;
-        case ApiItemKind.Package:
-          baseName = Utilities.getSafeFilenameForName(PackageName.getUnscopedName(hierarchyItem.displayName));
-          break;
-        default:
-          baseName += '.' + qualifiedName;
+    const apiItemHierarchy: readonly ApiItem[] = apiItem.getHierarchy();
+    const hierarchyItem: ApiItem = apiItemHierarchy[apiItemHierarchy.length - 1];
+
+    // For overloaded methods, add a suffix such as "MyClass.myMethod_2".
+    let qualifiedName: string = Utilities.getSafeFilenameForName(hierarchyItem.displayName);
+    if (ApiParameterListMixin.isBaseClassOf(hierarchyItem)) {
+      if (hierarchyItem.overloadIndex > 1) {
+        // Subtract one for compatibility with earlier releases of API Documenter.
+        // (This will get revamped when we fix GitHub issue #1308)
+        qualifiedName += `_${hierarchyItem.overloadIndex - 1}`;
       }
     }
+
+    switch (hierarchyItem.kind) {
+      case ApiItemKind.Model:
+      case ApiItemKind.EntryPoint:
+      case ApiItemKind.EnumMember:
+        break;
+      case ApiItemKind.Package:
+        baseName = Utilities.getSafeFilenameForName(PackageName.getUnscopedName(hierarchyItem.displayName));
+        break;
+      default:
+        baseName += '.' + qualifiedName;
+    }
+
     return baseName + '.md';
   }
 
