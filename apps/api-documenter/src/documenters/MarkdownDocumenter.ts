@@ -123,16 +123,17 @@ export class MarkdownDocumenter {
     this._writeBreadcrumb(output, apiItem);
 
     const scopedName: string = apiItem.getScopedNameWithinPackage();
+    const displayName: string = apiItem.displayName;
 
     switch (apiItem.kind) {
       case ApiItemKind.Class:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} class` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} class` }));
         break;
       case ApiItemKind.Enum:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} enum` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} enum` }));
         break;
       case ApiItemKind.Interface:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} interface` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} interface` }));
         break;
       case ApiItemKind.Constructor:
       case ApiItemKind.ConstructSignature:
@@ -143,13 +144,13 @@ export class MarkdownDocumenter {
         output.appendNode(new DocHeading({ configuration, title: `${scopedName} method` }));
         break;
       case ApiItemKind.Function:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} function` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} function` }));
         break;
       case ApiItemKind.Model:
         output.appendNode(new DocHeading({ configuration, title: `API Reference` }));
         break;
       case ApiItemKind.Namespace:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} namespace` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} namespace` }));
         break;
       case ApiItemKind.Package:
         console.log(`Writing ${apiItem.displayName} package`);
@@ -161,10 +162,10 @@ export class MarkdownDocumenter {
         output.appendNode(new DocHeading({ configuration, title: `${scopedName} property` }));
         break;
       case ApiItemKind.TypeAlias:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} type` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} type` }));
         break;
       case ApiItemKind.Variable:
-        output.appendNode(new DocHeading({ configuration, title: `${scopedName} variable` }));
+        output.appendNode(new DocHeading({ configuration, title: `${displayName} variable` }));
         break;
       default:
         throw new Error('Unsupported API item kind: ' + apiItem.kind);
