@@ -1,6 +1,0 @@
-{
-  "extends": "./node_modules/heft-minimal-rig-test/profiles/default/tsconfig-base.json",
-  "compilerOptions": {
-    "types": ["heft-jest", "node"]
-  }
-}

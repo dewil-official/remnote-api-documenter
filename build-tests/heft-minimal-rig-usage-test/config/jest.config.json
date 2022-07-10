@@ -1,3 +1,0 @@
-{
-  "extends": "heft-minimal-rig-test/profiles/default/config/jest.config.json"
-}

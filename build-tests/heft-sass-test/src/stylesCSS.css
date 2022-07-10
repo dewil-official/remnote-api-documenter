@@ -1,9 +1,0 @@
-/**
- * This file gets picked up by the heft-sass-plugin and output to the lib/ folder.
- * Then Webpack uses css-loader to embed, and finally style-loader to apply it to the DOM.
- */
-
-/* Testing CSS styles */
-.container {
-  padding: 40px;
-}
