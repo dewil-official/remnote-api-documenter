@@ -1,9 +1,0 @@
-{
-  "changes": [
-    {
-      "packageName": "h",
-      "type": "patch",
-      "comment": "Patching h"
-    }
-  ]
-}

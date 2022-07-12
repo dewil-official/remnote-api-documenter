@@ -1,4 +1,0 @@
-{
-  "extends": "./config2.json",
-  "folderPaths": ["./lib"]
-}

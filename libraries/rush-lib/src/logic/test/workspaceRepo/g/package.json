@@ -1,8 +1,0 @@
-{
-  "name": "g",
-  "version": "0.0.1",
-  "description": "Test package g",
-  "devDependencies": {
-    "a": "workspace:~1.0.0"
-  }
-}
