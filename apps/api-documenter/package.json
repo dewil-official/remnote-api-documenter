@@ -1,5 +1,5 @@
 {
-  "name": "@microsoft/api-documenter",
+  "name": "@remnote/api-documenter",
   "version": "7.18.2",
   "description": "Read JSON files from api-extractor, generate documentation pages",
   "repository": {
